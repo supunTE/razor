@@ -75,6 +75,14 @@
         "jestConfig": "apps/client/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+
+    "deploy":{
+      "executor": "@netlify-builder/deploy:deploy",
+      "options": {
+        "outputPath": "dist/apps/client",
+        "siteId": "2d672dd7-1a3d-4268-850d-7ae8bd772f69"
+      }
     }
   },
   "tags": []
