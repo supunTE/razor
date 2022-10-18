@@ -6,6 +6,7 @@
     "start": "nx serve",
     "build:client": "nx build client",
     "test": "nx affected:test --base=main --head=HEAD --parallel",
+    "affected:deploy": "nx affected:deploy",
     "execute-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\" && npx husky add .husky/pre-commit-msg \"exec < /dev/tty && npx cz --hook || true\""
   },
   "husky": {
@@ -25,6 +26,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@netlify-builder/deploy": "^5.0.0",
     "@nrwl/cli": "14.8.4",
     "@nrwl/cypress": "14.8.4",
     "@nrwl/eslint-plugin-nx": "14.8.4",
