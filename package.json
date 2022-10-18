@@ -4,9 +4,16 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test",
+    "build": "nx build --all",
+    "test": "nx test --all",
+    "deploy": "nx affected --target=deploy",
+    "build:client": "nx build client",
+    "build:server": "nx build server",
+    "serve": "node dist/apps/server/main.js",
     "execute-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\" && npx husky add .husky/pre-commit-msg \"exec < /dev/tty && npx cz --hook || true\""
+  },
+  "engines": {
+    "node": ">=16.17.0"
   },
   "husky": {
     "hooks": {
@@ -16,14 +23,17 @@
   },
   "private": true,
   "dependencies": {
+    "@netlify-builder/nx-deploy": "^0.0.1",
     "commitizen": "^4.2.5",
     "core-js": "^3.6.5",
+    "express": "^4.18.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@netlify-builder/deploy": "^5.0.0",
     "@nrwl/cli": "14.8.4",
     "@nrwl/cypress": "14.8.4",
     "@nrwl/eslint-plugin-nx": "14.8.4",
