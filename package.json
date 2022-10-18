@@ -10,7 +10,8 @@
     "build:client": "nx build client",
     "build:server": "nx build server",
     "serve": "node dist/apps/server/main.js",
-    "execute-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\" && npx husky add .husky/pre-commit-msg \"exec < /dev/tty && npx cz --hook || true\""
+    "execute-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\" && npx husky add .husky/pre-commit-msg \"exec < /dev/tty && npx cz --hook || true\"",
+    "ech":"echo $2"
   },
   "engines": {
     "node": ">=16.17.0"
