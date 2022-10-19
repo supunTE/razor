@@ -420,7 +420,7 @@ export function NxWelcome({ title }: { title: string }): ReactElement {
           <div id='welcome'>
             <h1>
               <span> Hello there, </span>
-              Welcome {title} 👋
+              Welcome {title} 👋 (new)
             </h1>
           </div>
 
