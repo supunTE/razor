@@ -6,12 +6,12 @@ on:
   pull_request:
     branches: [ "feature/1-ci-cd", "main" ]
   # remove later
-  push:
-    branches: [ "feature/1-ci-cd", "main" ]
+  # push:
+  #   branches: [ "feature/1-ci-cd", "main" ]
 
 jobs:
-  build:
-    name: Building|Testing|Deploying
+  initialize:
+    name: Initialize
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,6 +24,21 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm run build 
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
       - run: npm run test 
+  
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:      
+      - run: npm run build
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
       - run: npm run deploy -- --base=${{ github.sha }} --head=HEAD --parallel
