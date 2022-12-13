@@ -25,6 +25,16 @@ export interface AppLeaderboardEntry {
   values: AppFinishedPlayerValues | AppTimeoutPlayerValues;
 }
 
+/** Leaderboard entry of a completed player */
+export interface AppFinishedLeaderboardEntry extends AppLeaderboardEntry {
+  values: AppFinishedPlayerValues;
+}
+
+/** Leaderboard entry of a incompleted player */
+export interface AppTimeoutLeaderboardEntry extends AppLeaderboardEntry {
+  values: AppTimeoutPlayerValues;
+}
+
 /** A leaderboard (a collection of entries) */
 export type AppLeaderboard = AppLeaderboardEntry[];
 
