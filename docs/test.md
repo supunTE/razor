@@ -2,19 +2,6 @@
 ## Player Joining room
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'forest',
-    'themeVariables': {
-      'primaryColor': '#BB2528',
-      'primaryTextColor': '#fff',
-      'primaryBorderColor': '#7C0000',
-      'lineColor': '#F8B229',
-      'secondaryColor': '#006100',
-      'tertiaryColor': '#fff'
-    }
-  }
-}%%
 sequenceDiagram
     autonumber
     participant C as Client
@@ -24,7 +11,7 @@ sequenceDiagram
 
     C->>S: POST /room/:id [Req01]
 
-    rect rgba(0,0,0,0.2)
+    rect rgba(191, 223, 255, 0.5)
         S-->>S: Check tournament availability
         S-->>S: Validate player name
         S-->>S: Join tournament
