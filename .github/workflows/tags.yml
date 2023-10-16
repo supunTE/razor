@@ -1,0 +1,21 @@
+name: Add Label on Changes Requested
+
+on:
+  pull_request_review:
+    types:
+      - submitted
+
+jobs:
+  add-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if review state is "changes_requested"
+        run: |
+          if [[ ${{ github.event.review.state }} == "changes_requested" ]]; then
+            echo "Changes requested. Adding label..."
+            curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d '{"labels":["your-label"]}' "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels"
+          else
+            echo "Review state is not 'changes_requested'. No label added."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
